@@ -25,6 +25,6 @@ export class AppointmentManager extends Manager {
         if (a.start! < b.start!) return -1;
         return 1;
       });
-    } else throw "Weeknumber needs to be between 1-52";
+    } else throw "Weeknumber must to be between 1-52";
   }
 }
