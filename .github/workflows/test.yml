@@ -7,8 +7,8 @@ on:
   pull_request:
 
 jobs:
-  eslint:
-    name: eslint
+  test:
+    name: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
@@ -19,5 +19,7 @@ jobs:
           node-version: 12
       - name: Install Dependencies
         run: npm install
+      - name: Compile TypeScript
+        uses: icrawl/action-tsc@v1
       - name: Run Mocha
         run: npm run test
