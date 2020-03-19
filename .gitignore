@@ -41,3 +41,4 @@ tsconfig.tsbuildinfo
 
 # Custom
 docs/
+test/credentials.json
