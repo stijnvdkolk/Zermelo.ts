@@ -1,7 +1,7 @@
 {
   "name": "zermelo.ts",
-  "version": "0.1.0-beta",
-  "description": "The package for using the zermelo api",
+  "version": "0.1.0",
+  "description": "The node package for using the zermelo api",
   "files": [
     "dist"
   ],
