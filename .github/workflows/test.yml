@@ -1,0 +1,28 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+      - name: Install NodeJS v12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install Dependencies
+        run: npm install
+      - name: Compile TypeScript
+        run: npm run compile
+      - name: Run Mocha
+        run: npm run test
+        env:
+          TEST_SCHOOL: ${{ secrets.TEST_SCHOOL }}
+          TEST_ACCESS_TOKEN: ${{ secrets.TEST_ACCESS_TOKEN }}
