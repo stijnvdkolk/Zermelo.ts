@@ -23,3 +23,6 @@ jobs:
         run: npm run compile
       - name: Run Mocha
         run: npm run test
+        env:
+          TEST_SCHOOL: ${{ secrets.TEST_SCHOOL }}
+          TEST_ACCESS_TOKEN: ${{ secrets.TEST_ACCESS_TOKEN }}
