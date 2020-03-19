@@ -18,7 +18,7 @@ export class AppointmentManager extends Manager {
 
   async getParticipations(year: number, weeknumber: number, user = "~me") {
     if (weeknumber <= 52 && weeknumber >= 1) {
-      const res = await fetch(createApiURL(this.school, `appointmentparticipations?student=${user}&week=${year}${Math.round(weeknumber)}&fields=id,appointmentInstance,studentInDepartment,optional,studentEnrolled,attendanceParticipationCoordinator,plannedAttendance,realizedAttendance,publicComment,start,end,subjects,teachers,locations,groups,schedulerRemark,changeDescription,startTimeSlotName,endTimeSlotName,allowedStudentActions,availableSpace,cancelled,appointmentType,content`, this.accessToken));
+      const res = await fetch(createApiURL(this.school, `appointmentparticipations?student=${user}&week=${year}${Math.round(weeknumber) < 10 ? `0${Math.round(weeknumber)}` : Math.round(weeknumber)}&fields=id,appointmentInstance,studentInDepartment,optional,studentEnrolled,attendanceParticipationCoordinator,plannedAttendance,realizedAttendance,publicComment,start,end,subjects,teachers,locations,groups,schedulerRemark,changeDescription,startTimeSlotName,endTimeSlotName,allowedStudentActions,availableSpace,cancelled,appointmentType,content`, this.accessToken));
       const json: Response<IAppointment> = await res.json();
       return json.response.data.map(appointment => new Appointment(appointment)).sort((a, b) => {
         if (a.start === b.start) return 0;
