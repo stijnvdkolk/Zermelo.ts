@@ -1,6 +1,6 @@
 # Zermelo.ts
 
-> The package for using the zermelo api
+> Zermelo API wrapper for Typescript/NodeJS
 
 ## Installation
 
