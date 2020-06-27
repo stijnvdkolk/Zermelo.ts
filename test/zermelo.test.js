@@ -2,15 +2,13 @@ const { Zermelo, Announcement, Appointment, School, User } = require("../dist");
 const mocha = require("mocha");
 const { expect } = require("chai");
 
-let info;
+let info = {};
 try {
   info = require("./credentials.json");
 } catch (e) {
-  info = {
-    school: process.env.TEST_SCHOOL,
-    accessToken: process.env.TEST_ACCESS_TOKEN,
-  }
 }
+if (!info.school) info.school = process.env.TEST_SCHOOL;
+if (!info.accessToken) info.accessToken = process.env.TEST_ACCESS_TOKEN;
 
 mocha.describe("Zermelo", async () => {
   /**
@@ -37,8 +35,15 @@ mocha.describe("Zermelo", async () => {
   });
 
   describe("Appointments", () => {
-    it("should get appointments", async () => {
+    it("should get appointments using date", async () => {
       const appointments = await zermelo.appointments.get(new Date(), new Date());
+      expect(appointments).to.be.an("array");
+      for (const appointment of appointments) {
+        expect(appointment).to.be.an.instanceof(Appointment);
+      }
+    })
+    it("should get appointments using numbers", async () => {
+      const appointments = await zermelo.appointments.get(new Date().getTime() / 1000, new Date().getTime() / 1000);
       expect(appointments).to.be.an("array");
       for (const appointment of appointments) {
         expect(appointment).to.be.an.instanceof(Appointment);
