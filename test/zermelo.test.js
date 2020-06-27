@@ -38,7 +38,7 @@ mocha.describe("Zermelo", async () => {
 
   describe("Appointments", () => {
     it("should get appointments", async () => {
-      const appointments = await zermelo.appointments.get(new Date(), new Date());
+      const appointments = await zermelo.appointments.get(new Date().getTime() / 1000, new Date().getTime() / 1000);
       expect(appointments).to.be.an("array");
       for (const appointment of appointments) {
         expect(appointment).to.be.an.instanceof(Appointment);
