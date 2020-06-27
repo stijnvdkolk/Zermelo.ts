@@ -6,8 +6,8 @@ import { Appointment } from "./Appointment";
 
 export class AppointmentManager extends Manager {
 
-  async get(startDate: Date, endDate: Date, user = "~me") {
-    const res = await fetch(createApiURL(this.school, `appointments?user=${user}&start=${startDate.getTime() / 1000}&end=${endDate.getTime() / 1000}`, this.accessToken));
+  async get(startDate: Number, endDate: Number, user = "~me") {
+    const res = await fetch(createApiURL(this.school, `appointments?user=${user}&start=${startDate}&end=${endDate}`, this.accessToken));
     const json: Response<IAppointment> = await res.json();
     return json.response.data.map(appointment => new Appointment(appointment)).sort((a, b) => {
       if (a.start === b.start) return 0;
