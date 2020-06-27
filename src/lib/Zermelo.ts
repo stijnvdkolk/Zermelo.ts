@@ -8,16 +8,12 @@ import { AnnouncementsManager } from "./Announcement/AnnouncementManager";
 import { AppointmentManager } from "./Appointment/AppointmentManager";
 
 export class Zermelo {
-  private school: string;
-  private accessToken: string;
-  public schools: SchoolManager;
-  public users: UserManager;
-  public announcements: AnnouncementsManager;
-  public appointments: AppointmentManager;
+  schools: SchoolManager;
+  users: UserManager;
+  announcements: AnnouncementsManager;
+  appointments: AppointmentManager;
 
-  constructor(school: string, accessToken: string) {
-    this.school = school;
-    this.accessToken = accessToken;
+  constructor(private school: string, private accessToken: string) {
 
     this.schools = new SchoolManager(school, accessToken);
     this.users = new UserManager(school, accessToken);
