@@ -42,3 +42,4 @@ tsconfig.tsbuildinfo
 # Custom
 docs/
 test/credentials.json
+package-lock.json

@@ -3,6 +3,7 @@ import { IUser } from "../Interfaces";
 export class User {
   public firstName: string | undefined;
   public lastName: string | undefined;
+  public code: string | undefined;
   public prefix: string | undefined;
   public isArchived: boolean | undefined;
   public hasPassword: boolean | undefined;
@@ -21,6 +22,7 @@ export class User {
   constructor(user: IUser) {
     this.firstName = user.firstName;
     this.lastName = user.lastName;
+    this.code = user.code;
     this.prefix = user.prefix;
 
     this.isArchived = user.archived;
