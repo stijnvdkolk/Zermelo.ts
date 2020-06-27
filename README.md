@@ -1,10 +1,11 @@
 # Zermelo.ts
+
 > The package for using the zermelo api
 
 ## Installation
 
 ```bash
-yarn install zermelo.ts # Or npm install zermelo.ts
+yarn add zermelo.ts # Or npm install zermelo.ts
 ```
 
 ## Example
@@ -22,4 +23,5 @@ asyncFunction();
 ```
 
 ## Licensing
+
 The code in this project is licensed under MIT license.
