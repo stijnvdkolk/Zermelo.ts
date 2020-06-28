@@ -16,8 +16,12 @@ export class Appointment {
   public cancelled?: boolean;
   public modified?: boolean;
   public moved?: boolean;
+  public hidden?: boolean;
   public isNew?: any;
   public changeDescription?: string;
+  public created?: number;
+  public lastModified?: number;
+  public appointmentInstance?: number;
   constructor(appointment: IAppointment) {
     this.id = appointment!.id;
     this.start = appointment!.start;
@@ -34,7 +38,11 @@ export class Appointment {
     this.cancelled = appointment!.cancelled;
     this.modified = appointment!.modified;
     this.moved = appointment!.moved;
+    this.hidden = appointment!.hidden;
     this.isNew = appointment!.isNew;
     this.changeDescription = appointment!.changeDescription;
+    this.created = appointment!.created;
+    this.lastModified = appointment!.lastModified;
+    this.appointmentInstance = appointment!.appointmentInstance;
   }
 }
