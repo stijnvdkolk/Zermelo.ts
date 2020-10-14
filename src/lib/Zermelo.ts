@@ -14,7 +14,6 @@ export class Zermelo {
   appointments: AppointmentManager;
 
   constructor(private school: string, private accessToken: string) {
-
     this.schools = new SchoolManager(school, accessToken);
     this.users = new UserManager(school, accessToken);
     this.announcements = new AnnouncementsManager(school, accessToken);
@@ -35,14 +34,18 @@ export class Zermelo {
 
   public static async getAccessToken(school: string, authCode: string) {
     const authURL = `${getApiURL(school)}/oauth/token`;
+    const authCode = authCode.replace(/\s/g, "");
 
-    const res = await fetch(`${authURL}?grant_type=authorization_code&code=${authCode.replace(/\s/g, "")}`, { method: "POST" });
+    const res = await fetch(`${authURL}?grant_type=authorization_code&code=${authCode}`, { method: "POST" });
     if (!res.ok) {
       const message = `Server returned with an error (${res.status})`;
       throw res.status === 401 ? new AuthError(message) : new Error(message);
     }
+    
     const json: ITokenResponse = await res.json();
+    
     if (json.access_token) return json.access_token;
+    
     throw "Please try again later";
   }
 }
